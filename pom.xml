@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.jenkins-ci.plugins</groupId>
+    <artifactId>plugin</artifactId>
+    <version>3.0</version>
+    <relativePath/>
+  </parent>
+
+  <artifactId>fabric8-declarative-pipeline-step-function-plugin</artifactId>
+  <version>1.0.0-SNAPSHOT</version>
+  <packaging>hpi</packaging>
+  <name>Fabric8 Declarative Pipeline Steps Functions Plugin</name>
+  <description>Packages the jars up as a plugin</description>
+  <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
+
+  <properties>
+<!--
+    <jenkins.version>2.7.3</jenkins.version>
+    <workflow-job.verion>2.15</workflow-job.verion>
+
+-->
+    <workflow-step-api-plugin.version>2.13</workflow-step-api-plugin.version>
+
+    <java.level>8</java.level>
+
+    <fabric8.version>3.0.8</fabric8.version>
+    <jenkins-functions.version>1.0-SNAPSHOT</jenkins-functions.version>
+
+    <!-- disable enforcer -->
+<!--
+    <enforcer.skip>true</enforcer.skip>
+-->
+  </properties>
+
+  <licenses>
+    <license>
+      <name>Apache License, Version 2.0</name>
+      <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+      <distribution>repo</distribution>
+    </license>
+  </licenses>
+  
+<!--
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>io.fabric8</groupId>
+        <artifactId>fabric8-project</artifactId>
+        <version>${fabric8.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+-->
+
+  
+  <dependencies>
+    <dependency>
+      <groupId>io.fabric8.jenkins</groupId>
+      <artifactId>fabric8-declarative-pipeline-step-functions</artifactId>
+      <version>2.2-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>io.jenkins.functions</groupId>
+      <artifactId>functions-step</artifactId>
+      <version>${jenkins-functions.version}</version>
+    </dependency>
+    <!-- TODO could this move to functions-step as a dependency? -->
+    <dependency>
+      <groupId>org.jenkins-ci.plugins.workflow</groupId>
+      <artifactId>workflow-step-api</artifactId>
+      <version>${workflow-step-api-plugin.version}</version>
+    </dependency>
+
+
+    <!-- override dependencies to fix warnings with enforcer -->
+    <dependency>
+      <groupId>commons-codec</groupId>
+      <artifactId>commons-codec</artifactId>
+      <version>1.9</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>2.7.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>2.7.0</version>
+    </dependency>
+
+
+    <dependency>
+      <groupId>org.assertj</groupId>
+      <artifactId>assertj-core</artifactId>
+      <version>3.8.0</version>
+      <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+
+  </dependencies>
+
+  <developers>
+    <developer>
+      <id>geeks</id>
+      <name>Fabric8 Development Team</name>
+      <organization>fabric8</organization>
+      <organizationUrl>https://fabric8.io/</organizationUrl>
+    </developer>
+  </developers>
+
+  <scm>
+    <connection>scm:git:git://github.com/jenkinsci/updatebot-plugin.git</connection>
+    <developerConnection>scm:git:git@github.com:jenkinsci/updatebot-plugin.git</developerConnection>
+    <url>https://github.com/jenkinsci/updatebot-plugin</url>
+  </scm>
+
+  <repositories>
+    <repository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </repository>
+  </repositories>
+  <pluginRepositories>
+    <pluginRepository>
+      <id>repo.jenkins-ci.org</id>
+      <url>https://repo.jenkins-ci.org/public/</url>
+    </pluginRepository>
+  </pluginRepositories>
+
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>io.jenkins.functions</groupId>
+        <artifactId>functions-maven-plugin</artifactId>
+        <version>${jenkins-functions.version}</version>
+        <executions>
+          <execution>
+            <id>generate</id>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <phase>generate-sources</phase>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+
+</project>
