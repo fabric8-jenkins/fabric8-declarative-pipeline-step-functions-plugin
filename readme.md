@@ -18,3 +18,7 @@ mvn install
 ```
 
 
+## How it looks
+
+
+![Pipeline Syntax](https://issues.jenkins-ci.org/secure/attachment/40422/pipline-syntax-snippet-generator.png)
