@@ -17,11 +17,6 @@
   <url>https://wiki.jenkins-ci.org/display/JENKINS/TODO+Plugin</url>
 
   <properties>
-<!--
-    <jenkins.version>2.7.3</jenkins.version>
-    <workflow-job.verion>2.15</workflow-job.verion>
-
--->
     <workflow-step-api-plugin.version>2.13</workflow-step-api-plugin.version>
 
     <java.level>8</java.level>
@@ -42,21 +37,6 @@
       <distribution>repo</distribution>
     </license>
   </licenses>
-  
-<!--
-  <dependencyManagement>
-    <dependencies>
-      <dependency>
-        <groupId>io.fabric8</groupId>
-        <artifactId>fabric8-project</artifactId>
-        <version>${fabric8.version}</version>
-        <type>pom</type>
-        <scope>import</scope>
-      </dependency>
-    </dependencies>
-  </dependencyManagement>
--->
-
   
   <dependencies>
     <dependency>
@@ -157,5 +137,23 @@
       </plugin>
     </plugins>
   </build>
+
+  <profiles>
+    <profile>
+      <id>sonatype</id>
+      <distributionManagement>
+        <repository>
+          <id>oss-sonatype-staging</id>
+          <name>Sonatype Staging Repository</name>
+          <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+        </repository>
+        <snapshotRepository>
+          <id>oss-sonatype-snapshots</id>
+          <name>OSS Sonatype Nexus Snapshots</name>
+          <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </snapshotRepository>
+      </distributionManagement>
+    </profile>
+  </profiles>
 
 </project>
