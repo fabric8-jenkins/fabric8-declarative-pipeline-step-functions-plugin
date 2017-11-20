@@ -15,12 +15,7 @@
  */
 package io.fabric8.pipeline.steps;
 
-import io.jenkins.functions.runtime.ArgumentMetadata;
-import io.jenkins.functions.runtime.FunctionContext;
 import io.jenkins.functions.runtime.StepFunction;
-import io.jenkins.functions.runtime.StepFunctions;
-import io.jenkins.functions.runtime.StepMetadata;
-import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -34,7 +29,7 @@ public class MavenPipelineStepTest extends StepTestSupport {
 
     @Test
     public void testStepClass() throws Exception {
-        MavenPipelineStep step = new MavenPipelineStep();
+        MavenPipelineStep step = new MavenPipelineStep("foo.git");
         String containerName = step.getContainerName();
         System.out.println("containerName: " + containerName);
         assertThat(containerName).describedAs("containerName").isNotEmpty();
@@ -46,7 +41,7 @@ public class MavenPipelineStepTest extends StepTestSupport {
 
         Map<String, Object> defaultArguments = function.getArguments(new HashMap<>(), functionContext);
         System.out.println("Default arguments: " + defaultArguments);
-        
+
         assertThat(defaultArguments).describedAs("Default arguments").isNotEmpty();
         assertThat(defaultArguments.get("containerName")).describedAs("defaultArguments.containerName").isEqualTo("maven");
     }

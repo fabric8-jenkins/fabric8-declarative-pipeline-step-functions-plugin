@@ -16,7 +16,6 @@
 package io.fabric8.pipeline.steps;
 
 import io.jenkins.functions.runtime.StepFunction;
-import org.jenkinsci.plugins.workflow.steps.StepDescriptor;
 import org.junit.Test;
 
 import java.util.HashMap;
@@ -42,7 +41,7 @@ public class MavenReleaseStepTest extends StepTestSupport {
 
         Map<String, Object> defaultArguments = function.getArguments(new HashMap<>(), functionContext);
         System.out.println("Default arguments: " + defaultArguments);
-        
+
         assertThat(defaultArguments).describedAs("Default arguments").isNotEmpty();
         assertThat(defaultArguments.get("analyticsServiceName")).describedAs("defaultArguments.analyticsServiceName").isEqualTo("bayesian-link");
     }
