@@ -1,32 +1,5 @@
-# Sandboxed
+<aside class="notice">
+This repository has been archived and resetted, you can still look at the git history for the old reference.
+</aside>
 
-This project is currently sandboxed due to limitations in writing Java Step functions.
-
-For now we recommend the [fabric8-pipelines-plugin](https://github.com/fabric8-jenkins/fabric8-pipelines-plugin) instead.
-
-## Overview
-
-Jenkins plugin for the [fabric8-declarative-pipeline-step-functions](https://github.com/fabric8-jenkins/fabric8-declarative-pipeline-step-functions) so they can be used in scripted or declarative pipelines.
-
-
-## Building
-
-```bash
-git clone https://github.com/fabric8-jenkins/declarative-step-functions-api.git
-git clone https://github.com/fabric8-jenkins/fabric8-declarative-pipeline-step-functions.git
-git clone https://github.com/fabric8-jenkins/fabric8-declarative-pipeline-step-functions-plugin.git
-
-
-cd declarative-step-functions-api
-mvn install
-cd ../fabric8-declarative-pipeline-step-functions
-mvn install
-cd ../fabric8-declarative-pipeline-step-functions-plugin
-mvn install
-```
-
-
-## How it looks
-
-
-![Pipeline Syntax](https://issues.jenkins-ci.org/secure/attachment/40422/pipline-syntax-snippet-generator.png)
+See https://github.com/openshiftio/openshift.io/issues/4488
